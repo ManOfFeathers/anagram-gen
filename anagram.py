@@ -3,11 +3,17 @@ import random
 def anagram(name):
     s = name    # converts input to string
     b = len(s)  # b for blank spaces
-##    r = b - 1   # range of numerical values assigned to characters
     a = []      # array to be filled by rearranged letters
-    for i in range (b):
-        ##r = random.randint(0,b)
+    a2 = []
+    for i in range(b):
         a.append(i)
-    return(a)
 
-print(anagram("thomas"))
+    r = random.randint(0,b)
+    
+    for i in range(b):
+        np = a[r]
+        a2.append(np)
+
+        
+    return(a, a2)
+print(anagram("tartuffe"))
