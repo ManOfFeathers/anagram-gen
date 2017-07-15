@@ -32,4 +32,22 @@ def char_array(name):
     return "".join(a)       # generate results as a string
 ```
 
+##### Using this newfound knowledge, I succeded in taking [someone else's ideas](https://rosettacode.org/wiki/Anagrams#Python) and writing a function that not only scrambles individual words, but references them with other real words to create meaning.
+
+```python
+def new_anagram(sentence):
+    l = sentence.split() # new list
+    nl = []
+    for w in l:
+        ana = anagram(w) # calls function that scrambles one word
+        if ana:
+            choice = random.choice(anagram(w))
+            nl.append(choice)
+        else:
+            nl.append(w)
+    return " ".join(nl)
+
+print(new_anagram("erasmus tied cartesian silt citrus"))
+```
+
 ##### This will become a more interesting read as I update.
