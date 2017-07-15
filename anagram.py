@@ -1,4 +1,6 @@
 import random
+import urllib.request
+from collections import defaultdict
 
 def char_array(name):
     s = name                # converts input to string
@@ -10,18 +12,22 @@ def char_array(name):
 print(char_array("tartuffe"))
 
 # function currently in progress
+# function coded with help from https://rosettacode.org/wiki/Anagrams#Python
 
-##def anagram(name):
-##    s = name    
-##
-##    d = s.split("r",2)
-##
-##    a2 = [c for c in d]
-##
-##    random.shuffle(a2)
-##
-##    for t in d:
-##        print(t)
-##    return "r".join(a2)
-##
-##print(anagram("tartuffe"))
+def anagram(name):
+    s = name
+    b = len(s)
+    ws = urllib.request.urlopen('http://www.puzzlers.org/pub/wordlists/unixdict.txt').read().split() 
+    # ws for words, put each word on its own line
+    an = defaultdict(list)
+    for w in ws:
+        an[tuple(sorted(w))].append(w)
+    gram = None # an empty anagram-related variable
+
+    for key, l in an.items():
+        l = [x.decode() for x in l]
+        if name in l:
+            gram = l
+    return gram
+    
+print(anagram("gsdfgsre"))
