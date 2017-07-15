@@ -1,29 +1,27 @@
 import random
 
 def char_array(name):
-    s = name    # converts input to string
-    b = len(s)  # b for blank spaces
-    a = []      # array to be filled by rearranged letters 
+    s = name                # converts input to string
+    b = len(s)              # b for blank spaces                        
+    a = [c for c in s]      # array to be filled by rearranged letters 
+    random.shuffle(a)
+    return "".join(a)
 
-    for i in range(b):
-        a.append(i)
-    
-    return(a)
 print(char_array("tartuffe"))
 
-def anagram(name):
-    s = name    
-    b = len(s)
+# function currently in progress
 
-    a2 = char_array(s)
-
-    for i in range(b): 
-        r = random.randint(0,b)
-        a2[i] = r
-        if (a2[i-1] == r):
-           r = random.randint(0,b)
-           a2[i] = r
-        a2.append(r)
-    return(a2)
-
-print(anagram("tartuffe"))
+##def anagram(name):
+##    s = name    
+##
+##    d = s.split("r",2)
+##
+##    a2 = [c for c in d]
+##
+##    random.shuffle(a2)
+##
+##    for t in d:
+##        print(t)
+##    return "r".join(a2)
+##
+##print(anagram("tartuffe"))
