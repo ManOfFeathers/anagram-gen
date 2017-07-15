@@ -4,8 +4,8 @@ def char_array(name):
     s = name                # converts input to string
     b = len(s)              # b for blank spaces                        
     a = [c for c in s]      # array to be filled by rearranged letters 
-    random.shuffle(a)
-    return "".join(a)
+    random.shuffle(a)       # mix up array letters
+    return "".join(a)       # generate results as a string
 
 print(char_array("tartuffe"))
 
