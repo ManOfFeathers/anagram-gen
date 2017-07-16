@@ -2,14 +2,12 @@ import random
 import urllib.request
 from collections import defaultdict
 
-##def char_array(name):
-##    s = name                # converts input to string
-##    b = len(s)              # b for blank spaces                        
-##    a = [c for c in s]      # array to be filled by rearranged letters 
-##    random.shuffle(a)       # mix up array letters
-##    return "".join(a)       # generate results as a string
-##
-##print(char_array("jean flaherty"))
+def char_array(name):
+    s = name                # converts input to string
+    b = len(s)              # b for blank spaces                        
+    a = [c for c in s]      # array to be filled by rearranged letters 
+    random.shuffle(a)       # mix up array letters
+    return "".join(a)       # generate results as a string
 
 # function currently in progress
 # function coded with help from https://rosettacode.org/wiki/Anagrams#Python
@@ -28,15 +26,13 @@ def anagram(name):
         l = [y.decode() for y in l]
         if s in l:
             gram = l
-    return gram
-    
-print(anagram("angle"))
+    return gram    
 
 def new_anagram(sentence):
     l = sentence.split() # new list
     nl = []
     for w in l:
-        ana = anagram(w)
+        ana = anagram(w) # calls function that scrambles one word
         if ana:
             choice = random.choice(anagram(w))
             nl.append(choice)
@@ -44,5 +40,19 @@ def new_anagram(sentence):
             nl.append(w)
     return " ".join(nl)
 
-print(new_anagram("erasmus tied cartesian silt citrus"))
-    
+def best_anagram(string):
+    l = string.split()
+    nl = []
+    for w in l:
+        ana = anagram(w)
+        g = char_array(string) # g for gibberish
+        nl.append(g)
+        if ana:
+            choice = random.choice(anagram(w))
+            nl.append(choice)
+        else:
+            nl.append(w)
+##    return " ".join(nl)
+    return(nl)
+
+print(best_anagram("abraham lincoln"))
