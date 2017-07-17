@@ -14,7 +14,10 @@ def char_array(name):
 
 def anagram(name):
     s = name
-    ws = urllib.request.urlopen('http://www.puzzlers.org/pub/wordlists/unixdict.txt').read().split() 
+    ws = urllib.request.urlopen('http://www.puzzlers.org/pub/wordlists/unixdict.txt').read().split()
+                            # https://raw.githubusercontent.com/dwyl/english-words/master/words.txt
+                            # http://www.puzzlers.org/pub/wordlists/unixdict.txt
+                            # http://www-01.sil.org/linguistics/wordlists/english/
                             # ws for words, put each word on its own line
     ana = defaultdict(list)
     gram = None             # an empty anagram-related variable
@@ -40,6 +43,8 @@ def new_anagram(sentence):
             nl.append(w)
     return " ".join(nl)
 
+print(new_anagram("erasmus tied cartesian silt citrus")) # used for testing
+
 def best_anagram(string):
     l = string.split()
     nl = []
@@ -55,4 +60,6 @@ def best_anagram(string):
 ##    return " ".join(nl)
     return(nl)
 
-print(best_anagram("abraham lincoln"))
+print(best_anagram("erasmus tied cartesian silt citrus")) # used for testing
+
+# erasmus tied cartesian silt citrus
