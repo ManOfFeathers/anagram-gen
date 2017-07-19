@@ -43,22 +43,20 @@ def new_anagram(sentence):
             nl.append(w)
     return " ".join(nl)
 
-print(new_anagram("erasmus tied cartesian silt citrus")) # used for testing
+##print(new_anagram("erasmus tied cartesian silt citrus")) # used for testing
 
 def best_anagram(string):
-    l = string.split()
+    g = char_array(string) # g for gibberish
+    ng = g.split()
     nl = []
-    for w in l:
-        ana = anagram(w)
-        g = char_array(string) # g for gibberish
-        nl.append(g)
+    for l in ng:
+        ana = anagram(g)
         if ana:
-            choice = random.choice(anagram(w))
+            choice = random.choice(anagram(l))
             nl.append(choice)
         else:
-            nl.append(w)
-##    return " ".join(nl)
-    return(nl)
+            nl.append(l)
+    return " ".join(nl)
 
 print(best_anagram("erasmus tied cartesian silt citrus")) # used for testing
 
