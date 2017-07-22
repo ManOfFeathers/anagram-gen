@@ -4,14 +4,12 @@ from collections import defaultdict
 
 def char_array(name):
     s = name                # converts input to string
-    b = len(s)              # b for blank spaces                        
-    a = [c for c in s]      # array to be filled by rearranged letters 
+    b = len(s)              # b for blank spaces
+    a = [c for c in s]      # array to be filled by rearranged letters
     random.shuffle(a)       # mix up array letters
     return "".join(a)       # generate results as a string
 
-# function currently in progress
 # function coded with help from https://rosettacode.org/wiki/Anagrams#Python
-
 def anagram(name):
     s = name
     ws = urllib.request.urlopen('http://www.puzzlers.org/pub/wordlists/unixdict.txt').read().split()
@@ -24,12 +22,12 @@ def anagram(name):
 
     for w in ws:
         ana[tuple(sorted(w))].append(w)
-        
+
     for key, l in ana.items():
         l = [y.decode() for y in l]
         if s in l:
             gram = l
-    return gram    
+    return gram
 
 def new_anagram(sentence):
     l = sentence.split() # new list
@@ -43,21 +41,34 @@ def new_anagram(sentence):
             nl.append(w)
     return " ".join(nl)
 
-##print(new_anagram("erasmus tied cartesian silt citrus")) # used for testing
-
-def best_anagram(string):
-    g = char_array(string) # g for gibberish
-    ng = g.split()
+def scramble_checker(sentence, min_len):
+    gl = sentence.split(" ") # gibberish list
     nl = []
-    for l in ng:
-        ana = anagram(g)
+    for word in gl:
+        ana = anagram(word)
         if ana:
-            choice = random.choice(anagram(l))
-            nl.append(choice)
-        else:
-            nl.append(l)
-    return " ".join(nl)
+            aw = [] # accepted words
+            for word in ana:
+                if len(word) > min_len:
+                    aw.append(word)
+            if aw:
+                choice = random.choice(aw)
+                nl.append(choice)
+    return nl
 
-print(best_anagram("erasmus tied cartesian silt citrus")) # used for testing
+# print(scramble_checker(char_array("erasmus tied cartesian silt citrus"))) # used for testing
+
+def best_anagram(string, min_len):
+    nl = []
+    i = 0
+    while not nl: # while new list is empty
+        print(i)
+        g = char_array(string) # g for gibberish
+        nl = scramble_checker(g, min_len)
+        i += 1
+    return " ".join(nl), i
+##    return(nl)
+
+print(best_anagram("erasmus tied cartesian silt citrus", 4)) # used for testing
 
 # erasmus tied cartesian silt citrus
