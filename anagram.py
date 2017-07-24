@@ -1,3 +1,8 @@
+#
+# Anagram generator
+# Programmed by Griffin Myers with help from https://rosettacode.org/wiki/Anagrams#Python
+#
+
 from random import *
 from collections import defaultdict
 import random
@@ -31,7 +36,6 @@ def scramble_checker(sentence, min_len):
                 nl.append(choice)
     return nl
 
-# function coded with help from https://rosettacode.org/wiki/Anagrams#Python
 def anagram(name):
     s = name
     ana = defaultdict(list)
@@ -58,8 +62,6 @@ def new_anagram(sentence):
             nl.append(w)
     return " ".join(nl)
 
-# print(scramble_checker(char_array("erasmus tied cartesian silt citrus"))) # used for testing
-
 def best_anagram(string, min_len):
     nl = []
     i = 0
@@ -82,6 +84,8 @@ def smart_anagram(text, maxiter):
         il.append(iters)
     return wl, il
 
-print(smart_anagram("erasmus tied cartesian silt citrus", 3))
+print(best_anagram("erasmus tied cartesian silt citrus", 3)) # used for testing
 
 # print((output, iters)) # used for testing
+
+# print(scramble_checker(char_array("erasmus tied cartesian silt citrus"))) # used for testing
