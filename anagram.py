@@ -70,8 +70,7 @@ def best_anagram(string, min_len):
         g = char_array(string) # g for gibberish
         nl = scramble_checker(g, min_len)
         i += 1
-    return " ".join(nl), i
-##    return(nl)
+    return nl, i
 
 def smart_anagram(text, maxiter):
     wl = [] # word list
