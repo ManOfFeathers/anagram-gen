@@ -50,6 +50,16 @@ def anagram(name):
             gram = l
     return gram
 
+def best_anagram(string, min_len):
+    nl = []
+    i = 0
+    while not nl: # while new list is empty
+        print(i) # testing purposes -- shows us that it's thinking
+        g = char_array(string) # g for gibberish
+        nl = scramble_checker(g, min_len) # nl.append(scramble_checker(g, min_len))
+        i += 1
+    return nl, i
+
 # def new_anagram(sentence): # function not currently in use
 #     l = sentence.split() # new list
 #     nl = []
@@ -62,16 +72,6 @@ def anagram(name):
 #             nl.append(w)
 #     return " ".join(nl)
 
-def best_anagram(string, min_len):
-    nl = []
-    i = 0
-    while not nl: # while new list is empty
-        print(i) # testing purposes -- shows us that it's thinking
-        g = char_array(string) # g for gibberish
-        nl = scramble_checker(g, min_len)
-        i += 1
-    return nl, i
-
 # def smart_anagram(text, maxiter): # function not currently in use
 #     wl = [] # word list
 #     il = [] # iteration list`
@@ -83,7 +83,7 @@ def best_anagram(string, min_len):
 #         il.append(iters)
 #     return wl, il
 
-print(best_anagram("pneumonoultramicroscopicsilicovolcanoconiosis", 4)) # used for testing
+print(best_anagram("erasmus tied cartesian silt citrus", 4)) # used for testing
 
 # print((output, iters)) # used for testing
 
