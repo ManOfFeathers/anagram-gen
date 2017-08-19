@@ -8,10 +8,10 @@ from collections import defaultdict
 import random
 import urllib.request
 
-ws = urllib.request.urlopen('http://www.puzzlers.org/pub/wordlists/unixdict.txt').read().split()
+ws = urllib.request.urlopen('http://www-01.sil.org/linguistics/wordlists/english/wordlist/wordsEn.txt').read().split()
                             # https://raw.githubusercontent.com/dwyl/english-words/master/words.txt
                             # http://www.puzzlers.org/pub/wordlists/unixdict.txt
-                            # http://www-01.sil.org/linguistics/wordlists/english/
+                            # http://www-01.sil.org/linguistics/wordlists/english/wordlist/wordsEn.txt
                             # ws for words, put each word on its own line
 
 def char_array(name):
@@ -39,7 +39,7 @@ def scramble_checker(sentence, min_len):
 def anagram(name):
     s = name
     ana = defaultdict(list)
-    gram = None             # an empty anagram-related variable
+    gram = None # an empty variable
 
     for w in ws:
         ana[tuple(sorted(w))].append(w)
@@ -50,17 +50,17 @@ def anagram(name):
             gram = l
     return gram
 
-def new_anagram(sentence):
-    l = sentence.split() # new list
-    nl = []
-    for w in l:
-        ana = anagram(w) # calls function that scrambles one word
-        if ana:
-            choice = random.choice(anagram(w))
-            nl.append(choice)
-        else:
-            nl.append(w)
-    return " ".join(nl)
+# def new_anagram(sentence): # function not currently in use
+#     l = sentence.split() # new list
+#     nl = []
+#     for w in l:
+#         ana = anagram(w) # calls function that scrambles one word
+#         if ana:
+#             choice = random.choice(anagram(w))
+#             nl.append(choice)
+#         else:
+#             nl.append(w)
+#     return " ".join(nl)
 
 def best_anagram(string, min_len):
     nl = []
@@ -72,19 +72,21 @@ def best_anagram(string, min_len):
         i += 1
     return nl, i
 
-def smart_anagram(text, maxiter):
-    wl = [] # word list
-    il = [] # iteration list`
-    min_len = 3 # minimum word length
-    (output, iters) = best_anagram(text, min_len)
-    for i in range(maxiter):
-        min_len = len(output) + 1
-        wl.append(output)
-        il.append(iters)
-    return wl, il
+# def smart_anagram(text, maxiter): # function not currently in use
+#     wl = [] # word list
+#     il = [] # iteration list`
+#     min_len = 3 # minimum word length
+#     (output, iters) = best_anagram(text, min_len)
+#     for i in range(maxiter):
+#         # min_len = len(output) + 1
+#         wl.append(output)
+#         il.append(iters)
+#     return wl, il
 
-print(best_anagram("erasmus tied cartesian silt citrus", 3)) # used for testing
+print(best_anagram("pneumonoultramicroscopicsilicovolcanoconiosis", 4)) # used for testing
 
 # print((output, iters)) # used for testing
 
 # print(scramble_checker(char_array("erasmus tied cartesian silt citrus"))) # used for testing
+
+# erasmus tied cartesian silt citrus

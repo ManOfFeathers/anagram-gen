@@ -1,0 +1,7 @@
+min-len = 4
+string = "jean flaherty"
+
+5, 264
+5, 2729
+5, 2630
+5, 9871
