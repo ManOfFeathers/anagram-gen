@@ -83,10 +83,20 @@ def best_anagram(string, min_len):
 #         il.append(iters)
 #     return wl, il
 
-print(best_anagram("erasmus tied cartesian silt citrus", 4)) # used for testing
+def smart_anagram(string, min_len):
+    nl = []
+    i = 0
+    while not nl: # while new list is empty
+        print(i) # testing purposes -- shows us that it's thinking
+        nl = scramble_checker(char_array(string), min_len) # nl.append(scramble_checker(g, min_len))
+        i += 1
+    return nl, i
+
+
+print(smart_anagram("erasmus tied cartesian silt citrus", 3)) # used for testing
+# print(scramble_checker("erasmus tied cartesian silt citrus", 3))
+# print(scramble_checker(char_array("erasmus tied cartesian silt citrus"), 3)) # used for testing
 
 # print((output, iters)) # used for testing
-
-# print(scramble_checker(char_array("erasmus tied cartesian silt citrus"))) # used for testing
 
 # erasmus tied cartesian silt citrus
