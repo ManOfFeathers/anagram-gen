@@ -8,10 +8,11 @@ from collections import defaultdict
 import random
 import urllib.request
 
-ws = urllib.request.urlopen('http://www-01.sil.org/linguistics/wordlists/english/wordlist/wordsEn.txt').read().split()
+ws = urllib.request.urlopen('http://www-personal.umich.edu/~jlawler/wordlist').read().split()
                             # https://raw.githubusercontent.com/dwyl/english-words/master/words.txt
                             # http://www.puzzlers.org/pub/wordlists/unixdict.txt
                             # http://www-01.sil.org/linguistics/wordlists/english/wordlist/wordsEn.txt
+                            # http://www-personal.umich.edu/~jlawler/wordlist
                             # ws for words, put each word on its own line
 
 def char_array(name):
@@ -97,7 +98,7 @@ def smart_anagram(string, min_len):
                 i += 1
     return nl, i
 
-print(best_anagram("erasmus tied cartesian silt citrus", 2)) # used for testing
+print(best_anagram("erasmus tied cartesian silt citrus", 4)) # used for testing
 
 # print(scramble_checker("erasmus tied cartesian silt citrus", 3))
 # print(scramble_checker(char_array("erasmus tied cartesian silt citrus"), 3)) # used for testing
