@@ -50,4 +50,9 @@ def new_anagram(sentence):
 print(new_anagram("erasmus tied cartesian silt citrus"))
 ```
 
-##### This will become a more interesting read as I update.
+### 8/22/2017: Two words!
+
+![](twowords.png)
+
+##### Well, one of them is technically a suffix, but this is the first instance in testing in which two "words" appeared. This must be random and highly unlikely with the algorithm used.
+
