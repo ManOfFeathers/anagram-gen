@@ -15,6 +15,12 @@ ws = urllib.request.urlopen('http://www-01.sil.org/linguistics/wordlists/english
                             # http://www-personal.umich.edu/~jlawler/wordlist
                             # ws for words, put each word on its own line
 
+def readtxtfile():
+    with open("wl1.txt", "r") as file:
+        txt = file.read()
+        print(txt)
+        return txt
+
 def char_array(name):
     s = name                # converts input to string
     b = len(s)              # b for blank spaces
