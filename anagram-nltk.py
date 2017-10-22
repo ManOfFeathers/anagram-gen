@@ -2,18 +2,18 @@
 # Anagram generator
 # Programmed by Griffin Myers with help from https://rosettacode.org/wiki/Anagrams#Python
 #
+# wl1.txt -- http://www-01.sil.org/linguistics/wordlists/english/wordlist/wordsEn.txt
+# wl2.txt -- https://raw.githubusercontent.com/dwyl/english-words/master/words.txt
+# wl3.txt -- http://www.puzzlers.org/pub/wordlists/unixdict.txt
+# wl4.txt -- http://www-personal.umich.edu/~jlawler/wordlist
+#
 
 from nltk.tokenize import sent_tokenize, word_tokenize
 from collections import defaultdict
 import random
 import urllib.request
 
-ws = urllib.request.urlopen('http://www-01.sil.org/linguistics/wordlists/english/wordlist/wordsEn.txt').read().split()
-                            # https://raw.githubusercontent.com/dwyl/english-words/master/words.txt
-                            # http://www.puzzlers.org/pub/wordlists/unixdict.txt
-                            # http://www-01.sil.org/linguistics/wordlists/english/wordlist/wordsEn.txt
-                            # http://www-personal.umich.edu/~jlawler/wordlist
-                            # ws for words, put each word on its own line
+# ws = urllib.request.urlopen('http://www-01.sil.org/linguistics/wordlists/english/wordlist/wordsEn.txt').read().split()
 
 def readtxtfile():
     with open("wl1.txt", "r") as file:
