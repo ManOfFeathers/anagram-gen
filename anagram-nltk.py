@@ -26,7 +26,6 @@ def anagram(name):
     s = name
     ana = defaultdict(list)
     gram = None # an empty variable
-
     for w in ws:
         ana[tuple(sorted(w))].append(w)
 
@@ -64,25 +63,9 @@ def best_anagram(string, min_len):
 print(best_anagram("erasmus tied cartesian silt citrus", 4))
 ##print(word_tokenize("erasmus tied cartesian silt citrus"))
 
-##def smart_anagram(string, min_len):
-##    ol = string.split(" ") #old list
-##    nl = []
-##    i = 0
-##    #print(ol)
-##    for word in ol:
-##        while not nl: # while new list is empty
-##            print(i) # testing purposes -- shows us that it's thinking
-##            nl = scramble_checker(char_array(word), min_len)  # nl.append(scramble_checker(g, min_len))
-##            #del ol[i]
-##            if nl:
-##                i += 1
-##    return nl, i
-
 ##print(best_anagram("erasmus tied cartesian silt citrus", 4)) # used for testing
 
 # print(scramble_checker("erasmus tied cartesian silt citrus", 3))
 # print(scramble_checker(char_array("erasmus tied cartesian silt citrus"), 3)) # used for testing
-
-# print((output, iters)) # used for testing
 
 # erasmus tied cartesian silt citrus
