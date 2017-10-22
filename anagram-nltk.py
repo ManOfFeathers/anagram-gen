@@ -18,10 +18,10 @@ import urllib.request
 
 def readtxtfile():
     with open("wl1.txt", "r") as file:
-        ws = file.read()
-        return ws
+        txt = file.read()
+        return txt
 
-print(readtxtfile())
+ws = [readtxtfile()]
 
 def char_array(name):
     s = name                # converts input to string
@@ -37,12 +37,12 @@ def anagram(name):
     for w in ws:
         ana[tuple(sorted(w))].append(w)
     for key, l in ana.items():
-        l = [y.decode() for y in l]
+        l = [y for y in l] # l = [y.decode() for y in l]
         if s in l:
             gram = l
     return gram
 
-def scramble_checker(sentence, min_len):
+def scramble_checker(sentence, min_len): # for each word in senctence, anagrams that word
     gl = word_tokenize(sentence) # gibberish list
     nl = []
     for word in gl:
@@ -65,15 +65,16 @@ def best_anagram(string, min_len):
     while len(nl) < s_len: # while new list is empty
         print(i) # testing purposes -- shows us that it's thinking
         g = char_array(string) # g for gibberish
-        nl = nl.append(scramble_checker(g, min_len)) # scramble_checker(g, min_len)
+        nl = scramble_checker(g, min_len) # nl.append(scramble_checker(g, min_len))
         i += 1
     return nl, i
 
 # print(char_array("erasmus tied cartesian silt citrus"))
 # print(word_tokenize("erasmus tied cartesian silt citrus"))
+# print(len(word_tokenize("erasmus tied cartesian silt citrus")))
 # print(scramble_checker("erasmus tied cartesian silt citrus", 3))
 # print(scramble_checker(char_array("erasmus tied cartesian silt citrus"), 3)) # used for testing
 
-# print(best_anagram("erasmus tied cartesian silt citrus", 3)) # used for testing
+print(best_anagram("erasmus tied cartesian silt citrus", 3)) # used for testing
 
 # erasmus tied cartesian silt citrus
