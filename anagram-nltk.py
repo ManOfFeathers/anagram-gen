@@ -12,7 +12,7 @@
 from nltk.tokenize import sent_tokenize, word_tokenize
 from collections import defaultdict
 import random
-import urllib.request
+# import urllib.request
 
 # ws = urllib.request.urlopen('http://www-01.sil.org/linguistics/wordlists/english/wordlist/wordsEn.txt').read().split()
 
