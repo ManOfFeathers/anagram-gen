@@ -17,11 +17,13 @@ import random
 # ws = urllib.request.urlopen('http://www-01.sil.org/linguistics/wordlists/english/wordlist/wordsEn.txt').read().split()
 
 def readtxtfile():
-    with open("supplemental/wl1.txt", "r") as file:
-        txt = file.read()
+    with open("supplemental/wl3.txt", "r") as file:
+        txt = file.read().split()
+        print(txt)
         return txt
 
 ws = [readtxtfile()]
+print(ws)
 
 def char_array(name):
     s = name                # converts input to string
@@ -42,7 +44,7 @@ def anagram(name):
             gram = l
     return gram
 
-def scramble_checker(sentence, min_len): # for each word in senctence, anagrams that word
+def scramble_checker(sentence, min_len): # for each word in sentence, anagrams that word
     gl = word_tokenize(sentence) # gibberish list
     nl = []
     for word in gl:
@@ -58,11 +60,11 @@ def scramble_checker(sentence, min_len): # for each word in senctence, anagrams 
     return nl
 
 def best_anagram(string, min_len):
-    gl = word_tokenize(string) # gibberish list
+    # gl = word_tokenize(string) # gibberish list
     nl = []
     i = 0
-    s_len = len(gl) # string length
-    while len(nl) < s_len: # while new list is empty
+    # s_len = len(gl) # string length
+    while not nl: # while new list is empty
         print(i) # testing purposes -- shows us that it's thinking
         g = char_array(string) # g for gibberish
         nl = scramble_checker(g, min_len) # nl.append(scramble_checker(g, min_len))
