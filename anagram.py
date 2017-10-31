@@ -13,7 +13,7 @@ from nltk.tokenize import sent_tokenize, word_tokenize
 from collections import defaultdict
 import random
 # import urllib.request
-
+#
 # ws = urllib.request.urlopen('http://www-01.sil.org/linguistics/wordlists/english/wordlist/wordsEn.txt').read().split()
 
 def readtxtfile():
@@ -22,8 +22,8 @@ def readtxtfile():
         print(txt)
         return txt
 
-ws = [readtxtfile()]
-print(ws)
+ws = readtxtfile()
+# print(ws)
 
 def char_array(name):
     s = name                # converts input to string
@@ -60,16 +60,24 @@ def scramble_checker(sentence, min_len): # for each word in sentence, anagrams t
     return nl
 
 def best_anagram(string, min_len):
-    # gl = word_tokenize(string) # gibberish list
     nl = []
     i = 0
-    # s_len = len(gl) # string length
     while not nl: # while new list is empty
         print(i) # testing purposes -- shows us that it's thinking
         g = char_array(string) # g for gibberish
         nl = scramble_checker(g, min_len) # nl.append(scramble_checker(g, min_len))
         i += 1
-    return nl, i
+    # return "".join(nl)
+    return nl
+
+def bestest_anagram(string, min_len):
+    nl = [string]
+    el = []
+    while nl:
+        sub_s = best_anagram(string, min_len)
+        el.append(sub_s)
+        # nl.remove(sub_s)
+    return el
 
 # print(char_array("erasmus tied cartesian silt citrus"))
 # print(word_tokenize("erasmus tied cartesian silt citrus"))
@@ -77,6 +85,8 @@ def best_anagram(string, min_len):
 # print(scramble_checker("erasmus tied cartesian silt citrus", 3))
 # print(scramble_checker(char_array("erasmus tied cartesian silt citrus"), 3)) # used for testing
 
-print(best_anagram("erasmus tied cartesian silt citrus", 3)) # used for testing
+# print(best_anagram("erasmus tied cartesian silt citrus", 3)) # used for testing
+
+print(best_anagram("erasmus tied cartesian silt citrus", 3))
 
 # erasmus tied cartesian silt citrus
