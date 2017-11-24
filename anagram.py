@@ -44,8 +44,17 @@ def anagram(name):
             gram = l
     return gram
 
+def new_tokenizer(string, length):
+    n = len(string) - (length - 1)
+    nl = []
+    for i in range(0, n):
+        new_string = string[i:i+length]
+        # for j in range(i, i+length):
+        nl.append(new_string)
+    return nl
+
 def scramble_checker(sentence, min_len): # for each word in sentence, anagrams that word
-    gl = word_tokenize(sentence) # gibberish list
+    gl = new_tokenizer(sentence, min_len + 1) # gibberish list
     nl = []
     for word in gl:
         ana = anagram(word)
@@ -76,6 +85,19 @@ def bestest_anagram(string, min_len):
     while nl:
         sub_s = best_anagram(string, min_len)
         el.append(sub_s)
+        print(sub_s)
+        es = ""
+        found_char = False
+        for sub_char in "".join(sub_s):
+            for char in string:
+                if found_char or sub_char != char: # only checks for first char found
+                    es += char
+            print(es, sub_char)
+            string = es
+            es = ""
+        print(string)
+        if len(string) <= min_len:
+            break
         # nl.remove(sub_s)
     return el
 
@@ -87,6 +109,6 @@ def bestest_anagram(string, min_len):
 
 # print(best_anagram("erasmus tied cartesian silt citrus", 3)) # used for testing
 
-print(best_anagram("erasmus tied cartesian silt citrus", 3))
+print(bestest_anagram("erasmus tied cartesian silt citrus", 4))
 
 # erasmus tied cartesian silt citrus
